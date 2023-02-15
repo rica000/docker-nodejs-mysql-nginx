@@ -19,7 +19,8 @@ app.get('/', async function(req, res) {
     connection.query(`INSERT INTO people (name) VALUES ('${req.query.name}');`)
     connection.query('SELECT name from people', function (error, results, fields) {
         if (error) throw error;
-        res.json(results.map(obj => obj.name))
+        results.map(obj => obj.name).toString()
+        res.send('<h1>Full Cycle Rocks!</h1> Nomes:' + results.map(obj => obj.name).toString())
       });      
 });
 
